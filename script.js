@@ -77,3 +77,19 @@ app.post('/verify', async (req, res) => {
 app.listen(3000, () => {
     console.log('Server is running on port 3000.');
 });
+document.getElementById('uploadForm').addEventListener('submit', async function(event) {
+    event.preventDefault();
+
+    const formData = new FormData(this);
+    
+    const response = await fetch('/upload', {
+        method: 'POST',
+        body: formData,
+    });
+
+    if (response.ok) {
+        alert('Video uploaded successfully!');
+    } else {
+        alert('Failed to upload video.');
+    }
+});
